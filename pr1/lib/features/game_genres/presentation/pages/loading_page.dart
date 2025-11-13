@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../routes.dart';
+import '../../../../routes.dart';
 
 class LoadingPage extends StatefulWidget {
   const LoadingPage({super.key});

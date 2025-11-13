@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'features/game_genres/presentation/pages/detail_page.dart';
 import 'main_navigation.dart';
 import 'routes.dart';
-import 'pages/loading_page.dart';
-import 'pages/login_page.dart';
-import 'pages/register_page.dart';
-import 'pages/detail_page.dart';
+import 'features/game_genres/presentation/pages/loading_page.dart';
+import 'features/game_genres/presentation/pages/login_page.dart';
+import 'features/game_genres/presentation/pages/register_page.dart';
+import 'features/game_genres/presentation/bloc/game_genre_bloc.dart';
 
 void main() => runApp(const MyApp());
 
@@ -21,7 +23,10 @@ class MyApp extends StatelessWidget {
         Routes.loading: (context) => const LoadingPage(),
         Routes.login: (context) => LoginPage(),
         Routes.register: (context) => RegisterPage(),
-        Routes.home: (context) => const MainNavigation(),
+        Routes.home: (context) => BlocProvider(
+          create: (context) => GameGenreBloc(),
+          child: const MainNavigation(),
+        ),
       },
       onGenerateRoute: (settings) {
         if (settings.name == Routes.detail) {

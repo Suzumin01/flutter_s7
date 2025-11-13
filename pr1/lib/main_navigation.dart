@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pr1/pages/home_page.dart';
-import 'package:pr1/pages/profil_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'features/game_genres/presentation/pages/home_page.dart';
+import 'features/game_genres/presentation/bloc/game_genre_bloc.dart';
+import 'features/game_genres/presentation/pages/profil_page.dart';
 
 class MainNavigation extends StatefulWidget {
   const MainNavigation({super.key});
@@ -13,7 +15,10 @@ class _MainNavigationState extends State<MainNavigation> {
   int _selectedIndex = 0;
 
   static final List<Widget> _screens = [
-    const HomePage(),
+    BlocProvider(
+      create: (context) => GameGenreBloc(),
+      child: const HomePage(),
+    ),
     const ProfilePage(),
   ];
 
