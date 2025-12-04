@@ -2,21 +2,12 @@ import 'package:flutter/material.dart';
 
 class DetailPage extends StatelessWidget {
   final Map<String, dynamic> item;
-  final int imageIndex;
 
-  const DetailPage({super.key, required this.item, required this.imageIndex});
+  const DetailPage({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {
-    final List<String> _imagePaths = [
-      'assets/images/1.jpg',
-      'assets/images/2.jpg',
-      'assets/images/3.jpg',
-      'assets/images/4.jpg',
-      'assets/images/5.jpeg',
-    ];
-
-    final String imagePath = _imagePaths[imageIndex % _imagePaths.length];
+    final String imagePath = item['imagePath'];
 
     return Scaffold(
       appBar: AppBar(
