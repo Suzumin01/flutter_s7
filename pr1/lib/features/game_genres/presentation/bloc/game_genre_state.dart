@@ -7,8 +7,8 @@ final class GameGenreInitial extends GameGenreState {}
 
 final class GameGenreLoading extends GameGenreState {}
 
-final class GameGenreLoaded extends GameGenreState {
-  final List<GameGenre> gameGenres;
+class GameGenreLoaded extends GameGenreState {
+  final List<GameGenreModel> gameGenres;
   GameGenreLoaded(this.gameGenres);
 }
 

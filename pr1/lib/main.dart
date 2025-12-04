@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'features/game_genres/presentation/pages/detail_page.dart';
 import 'main_navigation.dart';
 import 'routes.dart';
@@ -7,8 +8,13 @@ import 'features/game_genres/presentation/pages/loading_page.dart';
 import 'features/game_genres/presentation/pages/login_page.dart';
 import 'features/game_genres/presentation/pages/register_page.dart';
 import 'features/game_genres/presentation/bloc/game_genre_bloc.dart';
+import 'di/di.dart';
 
-void main() => runApp(const MyApp());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  setupDI();
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -24,7 +30,8 @@ class MyApp extends StatelessWidget {
         Routes.login: (context) => LoginPage(),
         Routes.register: (context) => RegisterPage(),
         Routes.home: (context) => BlocProvider(
-          create: (context) => GameGenreBloc(),
+          // create: (_) => getIt<GameGenreBloc>()..add(LoadGameGenresEvent()),
+          create: (_) => getIt<GameGenreBloc>(),
           child: const MainNavigation(),
         ),
       },
@@ -32,9 +39,8 @@ class MyApp extends StatelessWidget {
         if (settings.name == Routes.detail) {
           final args = settings.arguments as Map<String, dynamic>;
           final item = args['item'] as Map<String, dynamic>;
-          final imageIndex = args['imageIndex'] as int;
           return MaterialPageRoute(
-            builder: (_) => DetailPage(item: item, imageIndex: imageIndex),
+            builder: (_) => DetailPage(item: item),
           );
         }
         return MaterialPageRoute(
