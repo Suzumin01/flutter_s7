@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'dart:io' show Platform;
 import '../../../../routes.dart';
+import '../../../../theme/theme_toggle_action.dart';
 import '../bloc/game_genre_bloc.dart';
 import '../../../../models/game_genre.dart';
 
@@ -57,6 +58,9 @@ class _HomePageState extends State<HomePage> {
             ),
           ],
         ),
+        actions: const [
+          ThemeToggleAction(),
+        ],
         backgroundColor: Colors.orange,
       ),
 

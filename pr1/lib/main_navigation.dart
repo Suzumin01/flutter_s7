@@ -28,7 +28,6 @@ class _MainNavigationState extends State<MainNavigation> {
     return Scaffold(
       body: _screens[_selectedIndex],
       bottomNavigationBar: NavigationBar(
-        backgroundColor: Colors.orange.shade50,
         indicatorColor: Colors.orange.shade100,
         labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
         selectedIndex: _selectedIndex,
